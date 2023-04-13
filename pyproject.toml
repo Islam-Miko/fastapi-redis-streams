@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "fastapi-redis-streams"
+version = "0.1.0"
+description = ""
+authors = ["miko <islamimanhod@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = {extras = ["all"], version = "^0.95.0"}
+arq = "^0.25.0"
+redis = "^4.5.4"
+pydantic = {extras = ["dotenv"], version = "^1.10.7"}
+python-multipart = "^0.0.6"
+
+[tool.poetry.dev-dependencies]
+pre-commit = "^3.2.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
