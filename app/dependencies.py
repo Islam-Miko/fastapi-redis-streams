@@ -1,7 +1,9 @@
 from arq import ArqRedis, create_pool
 from arq.connections import RedisSettings
+from fastapi import UploadFile
 
 from app.configs.environment import get_settings
+from app.exceptions import FileTooLarge
 
 settings = get_settings()
 redis_settings = RedisSettings(
@@ -9,5 +11,11 @@ redis_settings = RedisSettings(
 )
 
 
-async def get_redis() -> ArqRedis:
+async def get_arq_redis() -> ArqRedis:
     return await create_pool(redis_settings)
+
+
+async def check_file_size(file: UploadFile) -> UploadFile:
+    if file.size > (5 * 10**6):
+        raise FileTooLarge()
+    return file
