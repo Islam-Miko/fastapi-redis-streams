@@ -8,8 +8,8 @@ router = APIRouter(prefix="/data", tags=["Transformation"])
 
 
 @router.post("/")
-async def call_example(redis: ArqRedis = Depends(get_arq_redis)):
-    await redis.enqueue_job("example")
+async def call_example(key: str, redis: ArqRedis = Depends(get_arq_redis)):
+    await redis.enqueue_job("read_file", key)
     return {"started": True}
 
 
