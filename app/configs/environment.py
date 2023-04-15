@@ -6,8 +6,6 @@ from pydantic import BaseSettings, RedisDsn
 class Settings(BaseSettings):
     REDIS_HOST: str
     REDIS_PORT: str
-    MINIO_CLIENT_USER: str
-    MINIO_CLIENT_PASSWORD: str
 
     @property
     def redis_uri(self) -> RedisDsn:
